@@ -182,3 +182,75 @@ def game_dict():
             ]
         }
     }
+
+def num_points_per_game(name):
+    home_names = game_dict()['home']['players']
+    away_names = game_dict()['away']['players']
+    ppg = []
+    for player in home_names:
+        if (player['name'] == name):
+            ppg.append(player['points_per_game'])
+    for player in away_names:
+        if (player['name'] == name):
+            ppg.append(player['points_per_game'])
+    return ppg[0]
+
+def player_age(name):
+    home_names = game_dict()['home']['players']
+    away_names = game_dict()['away']['players']
+    age = []
+    for player in home_names:
+        if (player['name'] == name):
+            age.append(player['age'])
+    for player in away_names:
+        if (player['name'] == name):
+            age.append(player['age'])
+    return age[0]
+
+def team_colors(team_name):
+    home = game_dict()['home']
+    away = game_dict()['away']
+    if (home["team_name"] == team_name):
+        return home["colors"]
+    elif (away["team_name"] == team_name):
+        return away["colors"]
+    
+def team_names():
+    home = game_dict()['home']
+    away = game_dict()['away']
+    team_names = [home["team_name"], away["team_name"]]
+    return team_names
+
+
+def player_numbers(team_name):
+    home = game_dict()['home']
+    away = game_dict()['away']
+    player_numbers = []
+    if (home["team_name"] == team_name):
+        players = home['players']
+        for player in players:
+            player_numbers.append(player['number'])
+    elif (away["team_name"] == team_name):
+        players = away['players']
+        for player in players:
+            player_numbers.append(player['number'])
+    return player_numbers
+
+def player_stats(name):
+    home_names = game_dict()['home']['players']
+    away_names = game_dict()['away']['players']
+    for player in home_names:
+        if (player['name'] == name):
+            return player
+    for player in away_names:
+        if (player['name'] == name):
+            return player
+
+def average_rebounds_by_shoe_brand():
+    home_names = game_dict()['home']['players']
+    away_names = game_dict()['away']['players']
+    shoe_dict = []
+    for player in home_names:
+        shoe_dict.append({player['shoe_brand']: player['rebounds_per_game']})
+    for player in away_names:
+        shoe_dict.append({player['shoe_brand']: player['rebounds_per_game']})
